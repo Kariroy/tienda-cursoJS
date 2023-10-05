@@ -41,6 +41,8 @@ function newProduct(name,price,image){
     let producto = new product(name,price,image);
     productList.push(producto)
 }
+const details = document.querySelector("#productDetail")
+
 
 function insertar(arreglo) {
     for (let i = 0; i < arreglo.length; i++) {
@@ -60,19 +62,48 @@ function insertar(arreglo) {
         </figure>
         </div>
         `
+
         cardsContainer.appendChild(div)
+        let nombreProducto = arreglo[i].name
+        document.querySelector("."+ nombreProducto).addEventListener("click",()=>{
+            let price =  arreglo[i].price
+            let name =  arreglo[i].name
+            let img = arreglo[i].image
+            
+            details.classList.toggle("inactive")
+            shopCarMenu.classList.add("inactive");
+            mobileMenu.classList.add("inactive")
+            desktopMenu.classList.add("inactive")
+            
+            document.querySelector("#imagen").src = img
+            document.querySelector("#precio").textContent = "$" + price
+            document.querySelector("#nombre").textContent = name
+        })
+        document.querySelector(".product-detail-close").addEventListener("click",()=>{
+            details.classList.add("inactive")
+        })
     }
 }
+
+
+   
 
 
 
 
 
 newProduct("bike",200,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-newProduct("cuadro",200,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-newProduct("cuatrio",200,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-newProduct("skate",200,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-newProduct("pelota",200,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-newProduct("moto",200,"https://motos-b60.kxcdn.com/sites/default/files/yamaha-r6-race-2022.jpg")
+newProduct("cuadro",300,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+newProduct("cuatrio",5000,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+newProduct("skate",1500,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+newProduct("pelota",20,"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+newProduct("moto",300,"https://motos-b60.kxcdn.com/sites/default/files/yamaha-r6-race-2022.jpg")
 
 insertar(productList)
+
+
+
+
+
+
+
